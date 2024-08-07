@@ -1,20 +1,20 @@
-
-
 const express = require("express");
 const jobroutes = require("./rout/job");
 const mongoose = require("mongoose");
 const PORT = 4001;
+const dotenv = require("dotenv");
+dotenv.config({path:"./.env"});
 const app = express();
 
-mongoose.connect("mongodb://127.0.0.1:27017/job_app") 
+mongoose.connect(process.env.MONGODB_URI)
     .then(() =>
         console.log("connected to database")
     )
     .catch((e) =>
-        console.log(e)
+        console.log("Error:",e)
     );
 
-    app.use(express.json())
+app.use(express.json())
 app.use(jobroutes);
 
 app.listen(PORT, () => {

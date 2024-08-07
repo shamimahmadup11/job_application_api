@@ -3,7 +3,7 @@ const JObmodel=require("../model/job")
 const createJob =async(req, res)=>{
   // console.log(req.body);
  const response= await JObmodel.create(req.body)
-//  console.log(response);
+ console.log(response);
  res.json({
   success:true,
   message:"created job api"
